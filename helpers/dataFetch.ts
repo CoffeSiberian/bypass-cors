@@ -13,7 +13,7 @@ const dataFetch = async (
     try {
         return await fetch(url, optiosFetch);
     } catch (err: any) {
-        return new Response(JSON.stringify({ error: err.message }), {
+        return new Response(JSON.stringify({ error: "API response error" }), {
             status: 404,
         });
     }

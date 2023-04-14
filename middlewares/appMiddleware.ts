@@ -7,7 +7,6 @@ const checkValues = async (
     next: Function
 ): Promise<Function | void> => {
     let bodyData: BodyGetTypesNull = req.body;
-    console.log(bodyData.url);
     if (
         !(
             bodyData.url === undefined ||
