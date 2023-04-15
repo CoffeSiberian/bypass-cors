@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { BodyGetTypesNull } from "../types/bodyGetTypes";
+import { BodyGetTypes } from "../types/bodyGetTypes";
+import { queryCache } from "../helpers/cache";
+import { CacheTypes } from "../types/cacheTypes";
 
 const checkValues = async (
     req: Request,
@@ -19,4 +22,18 @@ const checkValues = async (
     res.send({ error: "need more data" });
 };
 
-export { checkValues };
+const isCached = async (
+    req: Request,
+    res: Response,
+    next: Function
+): Promise<Function | void> => {
+    let bodyData: BodyGetTypes = req.body;
+    let cachedData: CacheTypes | undefined = queryCache.get(bodyData.url);
+
+    if (!cachedData) return next();
+
+    res.status(cachedData.status);
+    res.send(cachedData.data);
+};
+
+export { checkValues, isCached };

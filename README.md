@@ -2,7 +2,11 @@
 
 ```
 PORT=8081
+CACHE_TIME=300
 ```
+
+-   Cache time is represented in seconds
+-   Use -1 in CACHE_TIME to disable cache
 
 ##### How to use
 

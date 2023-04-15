@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { checkValues } from "../middlewares/appMiddleware";
+import { checkValues, isCached } from "../middlewares/appMiddleware";
 
 // POST
 
@@ -7,6 +7,5 @@ import { checkValues } from "../middlewares/appMiddleware";
 import getApiResponse from "./getApiResponse";
 
 export default function (app: Express) {
-    app.use(checkValues);
-    app.get("/api/getApiResponse/", getApiResponse);
+    app.get("/api/getApiResponse/", checkValues, isCached, getApiResponse);
 }
