@@ -10,8 +10,14 @@ const getApiResponse = async (req: Request, res: apiResponse) => {
         bodyData.headers,
         new URL(bodyData.url)
     );
+
     res.status(apiResponse.status);
-    res.send(await apiResponse.json());
+    try {
+        res.send(await apiResponse.json());
+    } catch (e) {
+        res.status(404);
+        res.send(JSON.stringify({ error: "The API did not return a json" }));
+    }
 };
 
 export default getApiResponse;
