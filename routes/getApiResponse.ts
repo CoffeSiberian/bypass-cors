@@ -7,7 +7,7 @@ const getApiResponse = async (req: Request, res: apiResponse) => {
     let bodyData: BodyGetTypes = req.body;
 
     let apiResponse = await getFetch(
-        bodyData.body,
+        null,
         bodyData.headers,
         new URL(bodyData.url)
     );

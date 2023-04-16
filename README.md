@@ -29,14 +29,13 @@ npm run start
 ```
 
 <details>
- <summary><code>GET</code> <code><b>/api/getApiResponse</b></code> <code>(Send get request to other API)</code></summary>
+ <summary><code>POST</code> <code><b>/api/getApiResponse</b></code> <code>(Send GET request to other API)</code></summary>
 
 `BODY`:
 
 ```json
 {
   "url": string,
-  "body": string | nulll,
   "headers": json
 }
 ```
